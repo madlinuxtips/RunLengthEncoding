@@ -28,10 +28,16 @@ public class Encode {
         writeCount++;
       }
       else {
+        writeBytes[writeCount]=(byte)1;
+        writeCount++;
         writeBytes[writeCount]=readBytes[i];
         writeCount++;
       }
     }
-    return writeBytes;
+    byte[] cleanBytes = new byte[writeCount];
+    for(int i=0;i<writeCount;i++){
+      cleanBytes[i] = writeBytes[i];
+    }
+    return cleanBytes;
   }
 }
