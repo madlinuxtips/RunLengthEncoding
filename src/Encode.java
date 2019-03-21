@@ -1,34 +1,37 @@
-import java.util.ArrayList;
 
 public class Encode {
-  public static ArrayList<Byte> encode(byte[] array) {
-    ArrayList<Byte> bytes = new ArrayList<>();
+  public static byte[] encode(byte[] readBytes) {
+    byte[] writeBytes = new byte[readBytes.length];
     int count = 0;
+    int writeCount=0;
 
-    for (int i = 0; i < array.length - 1; i++) {
+    for (int i = 0; i < readBytes.length - 1; i++) {
 
-      if (array[i] == array[i+1]) {
+      if (readBytes[i] == readBytes[i+1]) {
 
         count = 2;
 
-        while (i < array.length - 2) {
+        while (i < readBytes.length - 2) {
 
           i++;
 
-          if (array[i] == array[i+1]) {
+          if (readBytes[i] == readBytes[i+1]) {
             count++;
           }
           else {
             break;
           }
         }
-        bytes.add((byte) count);
-        bytes.add(array[i]);
+        writeBytes[writeCount]=(byte)count;
+        writeCount++;
+        writeBytes[writeCount]=readBytes[i];
+        writeCount++;
       }
       else {
-        bytes.add(array[i]);
+        writeBytes[writeCount]=readBytes[i];
+        writeCount++;
       }
     }
-    return bytes;
+    return writeBytes;
   }
 }
