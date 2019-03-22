@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
 
 public class Main {
 
@@ -19,9 +18,7 @@ public class Main {
 
   public static void main(String[] args) {
     if(args.length==3){
-      System.out.println(args[0]);
       if(args[0].equals("encode")){
-        System.out.println("Inside");
         byte[] readBytes = {};
         try{
           readBytes=readFile(args[1]);
@@ -55,14 +52,12 @@ public class Main {
 
       }
       else{
-        System.out.println("Usage:java Main decode file");
-        System.out.println("Here");
+        System.out.println("Usage:java Main decode/encode infile outfile");
       }
     }
     else{
-      System.out.println("Usage:java Main decode file");
+      System.out.println("Usage:java Main decode/encode infile outfile");
       System.exit(1);
     }
-
   }
 }
